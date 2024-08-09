@@ -1,6 +1,10 @@
 "use client";
 
-import { Button, Typography, Card } from "@material-tailwind/react";
+import { Button, Typography} from "@material-tailwind/react";
+import {Model} from '../components/model';
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import { OrbitControls } from "@react-three/drei";
 
 function Hero() {
   return (
@@ -8,13 +12,13 @@ function Hero() {
     <div className="absolute inset-0 h-full w-full bg-gray-900/60" />
     <div className="grid min-h-screen px-8">
       <div className="container relative z-10 my-auto mx-auto grid place-items-center text-center">
-        <Typography
-          variant="h1"
-          color="white"
-          className="md:max-w-full lg:max-w-3xl"
-        >
-          ESENCIA
-        </Typography>
+      <Canvas>
+        <Suspense fallback={null}>
+          <OrbitControls />
+          <Model />
+          {/* <Environment preset="sunset" background /> */}
+        </Suspense>
+      </Canvas>
         <Typography
           variant="lead"
           color="white"
